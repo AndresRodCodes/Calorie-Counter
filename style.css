@@ -1,3 +1,11 @@
 .heading-font {
 	font-family: 'Josefin Sans', sans-serif;
 }
+
+#alert {
+	border-radius: 25px;
+}
+
+.rounded {
+	border-radius: 25px;
+}

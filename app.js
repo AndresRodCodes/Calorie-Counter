@@ -309,12 +309,19 @@ const UICtrl = (function() {
 		},
 
 		showAlert: function(message, classes) {
+			// Remove alert if exists
+			if (document.querySelector('#alert')) {
+				document.querySelector('#alert').remove();
+			}
+
 			// Creat div
 			const div = document.createElement('div');
-			// Insert message
+			// Add message
 			div.appendChild(document.createTextNode(message));
-			// Insert the class name
+			// Add classes
 			div.className = classes;
+			// Add ID
+			div.id = 'alert';
 
 			// Get parent
 			const parent = document.querySelector('#card-container');
