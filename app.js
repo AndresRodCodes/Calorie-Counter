@@ -306,6 +306,25 @@ const UICtrl = (function() {
 		},
 		getSelectors: function() {
 			return UISelectors;
+		},
+
+		showAlert: function(message, classes) {
+			// Creat div
+			const div = document.createElement('div');
+			// Insert message
+			div.appendChild(document.createTextNode(message));
+			// Insert the class name
+			div.className = classes;
+
+			// Get parent
+			const parent = document.querySelector('#card-container');
+			// Get child
+			const child = document.querySelector('.card');
+			// Insert alert
+			parent.insertBefore(div, child);
+
+			// Remove alert after few seconds
+			setTimeout(() => div.remove(), 3000);
 		}
 	};
 })();
@@ -370,6 +389,9 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl) {
 
 			// Clear fields
 			UICtrl.clearInput();
+
+			// Show confirmation alert
+			UICtrl.showAlert('Item Added', 'green white-text center-align');
 		}
 
 		e.preventDefault();
@@ -417,6 +439,9 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl) {
 
 		UICtrl.clearEditState();
 
+		// Show alert
+		UICtrl.showAlert('Item Updated', 'orange darken-3 white-text center-align');
+
 		e.preventDefault();
 	};
 
@@ -441,6 +466,9 @@ const App = (function(ItemCtrl, StorageCtrl, UICtrl) {
 
 		// Clear update state
 		UICtrl.clearEditState();
+
+		// Show alert
+		UICtrl.showAlert('Item Deleted', 'green white-text center-align');
 
 		e.preventDefault();
 	};
